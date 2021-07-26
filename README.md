@@ -31,3 +31,22 @@ cosine_scores = util.pytorch_cos_sim(embeddings,embeddings)
 g = nx.from_numpy_matrix(cosine_scores.numpy())
 centrality_scores = nx.degree_centrality(g)
 print("\n\nSummary:")
+sentence 1 = "I Like Python because I can build AI applications"
+sentence 2 = "I Like Python because I can do data analytics"
+embedding1 = model.encode(sentence1, convert_to_tensor=True)
+embedding2 = model.encore(sentence2, convert_to_tensor=True)
+cosine scores = util.pytorch_cos_sim(embedding1, embedding2)
+print("Sentence 1:", sentence1)
+print("Sentence 2:", sentence2)
+print("Similarity score", cosine_scores.itrem())
+sentence1 = ["I Like Python because I can build AI applications, "The cat sits on the ground"]
+sentence2 = [I Like Python because I can do data anaytics", "The cat walks on the sidewalk"]
+embedding1 = model.encode(sentence1, convert_to_tensor=True)
+embedding2 = model.encore(sentence2, convert_to_tensor=True)
+cosine scores= util.pytorch_cos_sim(embedding1, embedding2)
+for i in range(len(sentence1))
+for j in range(len(sentence2))
+print("Sentence 1:", sentences1[i])
+print("Sentence 2:", sentences2[j])
+print("similarity Score:", cosine_scores[i][j].item())
+print()
