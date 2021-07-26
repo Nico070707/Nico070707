@@ -4,12 +4,8 @@
 - 💞️ I’m looking to collaborate on Project for humanity with code
 - 📫 How to reach me https://www.linkedin.com/in/nicolas-bourne-635a0033/
 
-<!---
-Nico070707/Nico070707 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
-corpus = ("I Like Python because I can build AI applications", 
-"I like Python because I can do data analytics",
+corpus = ["I Like Python because I can build AI applications", 
+"I like Python because I can do data analytics","The cat sits on the ground","The cat walks on the sidewalk"]
 corpus_embeddings = model.encode(corpus, convert_to_tensor=True)
 sentence = "I like Javascript because I can build web applications"
 sentence_embedding = model.encode(sentence, convert_to_tensor=True)
