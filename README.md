@@ -53,4 +53,30 @@ print("similarity Score:", cosine_scores[i][j].item())
 print()
 OPENSHIFT_SERVER: ${{ secret.OPENSHIFT_SERVER }}
 OPENSHIFT_TOKEN: ${{ secret.OPENSHIFT_TOKEN }}
+APP_PORT: ""
+OPENSHIFT_NAMESPACE: ""
+APP_NAME: ""
+TAG: ""
+branches: [ main ]
+openshift-ci-cd:
+name: Build and deploy OpenShift
+runs-on: ubuntu-18.04
+environment: production
+
+outputs:
+ROUTE: ${{ steps.deploy-and-expose.outputs.route }}
+SELECTOR: ${{ steps.deploy-and-expose.outputs.selector }}
+steps:
+name: OpenShift
+REGISTRY: quay.io/Nico070707
+REGISTRY_USER: Nico070707
+REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+push:
+branches: [main]
+jobs: 
+openshift-ci-cd:
+name: Build and deploy to OpenShift
+runs-on: ubuntu-18.04
+environment: production
+
 
