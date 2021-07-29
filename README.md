@@ -73,6 +73,9 @@ REGISTRY_USER: Nico070707
 REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
 push:
 branches: [main]
+
+[dockerfile.github.io-master.zip](https://github.com/Nico070707/Nico070707/files/6899915/dockerfile.github.io-master.zip)
+
 jobs: 
 openshift-ci-cd:
 name: Build and deploy to OpenShift
