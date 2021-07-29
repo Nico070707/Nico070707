@@ -51,3 +51,6 @@ print("Sentence 1:", sentences1[i])
 print("Sentence 2:", sentences2[j])
 print("similarity Score:", cosine_scores[i][j].item())
 print()
+OPENSHIFT_SERVER: ${{ secret.OPENSHIFT_SERVER }}
+OPENSHIFT_TOKEN: ${{ secret.OPENSHIFT_TOKEN }}
+
