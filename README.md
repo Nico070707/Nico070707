@@ -32,7 +32,6 @@ g = nx.from_numpy_matrix(cosine_scores.numpy())
 centrality_scores = nx.degree_centrality(g)
 most_central_sentence_indices = np.argsort(centrality_scores)
 print("\n\nSummary:")
-
 sentence 1 = "I Like Python because I can build AI applications"
 sentence 2 = "I Like Python because I can do data analytics"
 embedding1 = model.encode(sentence1, convert_to_tensor=True)
@@ -100,5 +99,40 @@ openshift-ci-cd:
 name: Build and deploy to OpenShift
 runs-on: ubuntu-18.04
 environment: production
+schedule:
+- cron: '20 14 * * *'
+push:
+branches: [ main ]
+# Publish semver tags as releases.
+tags: [ 'v*.*.*' ]
+pull_request:
+branches: [ main ]
+REGISTRY: ghcr.io
+# github.repository as <account>/<repo>
+name: Docker Metadata action
+uses: docker/metadata-action@v3.4.1
+name: Docker Login
+uses: docker/login-action@v1.10.0
+name: Build and push Docker images
+uses: docker/build-push-action@v2.6.1
+IMAGE_NAME: ${{ github.repository }}
+name: Log into registry ${{ env.REGISTRY }}
+if: github.event_name != 'pull_request'
+uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
+with:
+registry: ${{ env.REGISTRY }}
+username: ${{ github.actor }}
+password: ${{ secrets.GITHUB_TOKEN }}
+name: Extract Docker metadata
+name: Docker Metadata action
+uses: docker/metadata-action@v3.4.1
+${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+# https://github.com/docker/build-push-action
+name: Build and push Docker image
+uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+context: .
+push: ${{ github.event_name != 'pull_request' }}
+tags: ${{ steps.meta.outputs.tags }}
+labels: ${{ steps.meta.outputs.labels }}
 
 
