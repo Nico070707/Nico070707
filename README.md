@@ -108,7 +108,9 @@ tags: [ 'v*.*.*' ]
 pull_request:
 branches: [ main ]
 REGISTRY: ghcr.io
-# github.repository as <account>/<repo>
+cron: '20 14 * * *'
+push:
+branches: [ main ]
 name: Docker Metadata action
 uses: docker/metadata-action@v3.4.1
 name: Docker Login
