@@ -63,7 +63,27 @@ openshift-ci-cd:
 name: Build and deploy OpenShift
 runs-on: ubuntu-18.04
 environment: production
-
+name: Build and push Docker images
+uses: docker/build-push-action@v2.6.1
+name: Log into registry ${{ env.REGISTRY }}
+ if: github.event_name != 'pull_request'
+ uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
+with:
+registry: ${{ env.REGISTRY }}
+username: ${{ github.actor }}
+password: ${{ secrets.GITHUB_TOKEN }}
+name: Extract Docker metadata
+id: meta
+uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+with:
+images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+name: Build and push Docker image
+uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+with:
+context: .
+push: ${{ github.event_name != 'pull_request' }}
+tags: ${{ steps.meta.outputs.tags }}
+labels: ${{ steps.meta.outputs.labels }}
 outputs:
 ROUTE: ${{ steps.deploy-and-expose.outputs.route }}
 SELECTOR: ${{ steps.deploy-and-expose.outputs.selector }}
@@ -74,9 +94,7 @@ REGISTRY_USER: Nico070707
 REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
 push:
 branches: [main]
-
 [dockerfile.github.io-master.zip](https://github.com/Nico070707/Nico070707/files/6899915/dockerfile.github.io-master.zip)
-
 jobs: 
 openshift-ci-cd:
 name: Build and deploy to OpenShift
