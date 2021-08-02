@@ -161,17 +161,60 @@ name: Build and push Docker image
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          corpus = ["I Like Python because I can build AI applications", 
-"I like Python because I can do data analytics","The cat sits on the ground","The cat walks on the sidewalk"] 
-corpus_embeddings = model.encode(corpus, convert_to_tensor=True)
-sentence = "I like Javascript because I can build web applications"
-sentence_embedding = model.encode(sentence, convert_to_tensor=True)
-cos_scores = util.pytorch_cos_sim(sentence_embedding, corpus_embeddings)[0]
-top_results = np.argpartition(-cos_scores, range(top_k))[0:top_k]
-print("Sentence:",sentence, "\n")
-print("Top", top_k, "most similar sentences in corpus:")
-for idx in top_results(0:top_k]:
-print(corpus[idx], "(Score: %.4f)" % (cos_scores[idx]))
+         - name: Docker Login
+  uses: docker/login-action@v1.10.0
+$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+$ cd YOUR-REPOSITORY
+alert("Hello, World!");
+$ npm init
+  ...
+  package name: @YOUR-USERNAME/YOUR-REPOSITORY
+  ...
+  test command: exit 0
+  ... 
+  $ npm install
+$ git add index.js package.json package-lock.json
+$ git commit -m "initialize npm package"
+$ git push
+name: Node.js Package
+on:
+  release:
+    types: [created]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12
+      - run: npm ci
+      - run: npm test
+publish-gpr:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12
+          registry-url: https://npm.pkg.github.com/
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          @NICO070707:registry=https://npm.pkg.github.com
+          $ git add .github/workflows/release-package.yml
+# Also add the file you created or edited in the previous step.
+$ git add .npmrc or package.json
+$ git commit -m "workflow to publish package"
+$ git push
+          
+
+
 
 
 
