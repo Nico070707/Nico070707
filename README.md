@@ -5,9 +5,8 @@
 - 🌱 I’m currently learning DataScience
 - 💞️ I’m looking to collaborate on Project for humanity with code
 - 📫 How to reach me https://www.linkedin.com/in/nicolas-bourne-635a0033/
-
 corpus = ["I Like Python because I can build AI applications", 
-"I like Python because I can do data analytics","The cat sits on the ground","The cat walks on the sidewalk"]
+"I like Python because I can do data analytics","The cat sits on the ground","The cat walks on the sidewalk"] 
 corpus_embeddings = model.encode(corpus, convert_to_tensor=True)
 sentence = "I like Javascript because I can build web applications"
 sentence_embedding = model.encode(sentence, convert_to_tensor=True)
@@ -141,5 +140,38 @@ name: Hello world action
       super_secret: ${{ secrets.SuperSecret }}
     env: # Or as an environment variable
       super_secret: ${{ secrets.SuperSecret }}
+      name: Checkout repository
+        uses: actions/checkout@v2
+        name: Log into registry ${{ env.REGISTRY }}
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+name: Build and push Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          corpus = ["I Like Python because I can build AI applications", 
+"I like Python because I can do data analytics","The cat sits on the ground","The cat walks on the sidewalk"] 
+corpus_embeddings = model.encode(corpus, convert_to_tensor=True)
+sentence = "I like Javascript because I can build web applications"
+sentence_embedding = model.encode(sentence, convert_to_tensor=True)
+cos_scores = util.pytorch_cos_sim(sentence_embedding, corpus_embeddings)[0]
+top_results = np.argpartition(-cos_scores, range(top_k))[0:top_k]
+print("Sentence:",sentence, "\n")
+print("Top", top_k, "most similar sentences in corpus:")
+for idx in top_results(0:top_k]:
+print(corpus[idx], "(Score: %.4f)" % (cos_scores[idx]))
+
 
 
