@@ -212,6 +212,31 @@ publish-gpr:
 $ git add .npmrc or package.json
 $ git commit -m "workflow to publish package"
 $ git push
+name: Log into registry ${{ env.REGISTRY }}
+        if: github.event_name != 'pull_request
+        - name: Docker Login
+  uses: docker/login-action@v1.10.0
+with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          - name: Docker Metadata action
+  uses: docker/metadata-action@v3.4.1
+ name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+- name: Build and push Docker images
+  uses: docker/build-push-action@v2.6.1
+  name: Build and push Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
           
 
 
