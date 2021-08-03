@@ -376,15 +376,9 @@ steps:
         port: ${{ env.APP_PORT }}
 - name: View application route
      run: |
-        [[ -n ${{ env.ROUTE }} ]] || (echo "Determining application route failed in previous step"; exit 1)
-        echo "======================== Your application is available at: ========================"
-        echo ${{ env.ROUTE }}
-        echo "==================================================================================="
-        echo
-        echo "Your app can be taken down with: \"oc delete all --selector='${{ env.SELECTOR }}'\""
-      env:
-        ROUTE: ${{ steps.deploy-and-expose.outputs.route }}
-        SELECTOR: ${{ steps.deploy-and-expose.outputs.selector }}
+        [[ -n ${{ env.ROUTE }} ]]
+        [transformers-master (3).zip](https://github.com/Nico070707/Nico070707/files/6924444/transformers-master.3.zip)
+gh repo clone huggingface/transformers
 
 
 
