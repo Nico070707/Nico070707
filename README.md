@@ -53,6 +53,19 @@ print()
 OPENSHIFT_SERVER: ${{ secret.OPENSHIFT_SERVER }}
 OPENSHIFT_TOKEN: ${{ secret.OPENSHIFT_TOKEN }}
 APP_PORT: ""
+        name: Docker Image CI
+        on:
+        push:
+        branches: [ main ]
+        pull_request:
+        branches: [ main ]
+        jobs:
+        build:
+        runs-on: ubuntu-latest
+steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
 OPENSHIFT_NAMESPACE: ""
 APP_NAME: ""
 TAG: ""
@@ -378,7 +391,6 @@ steps:
      run: |
         [[ -n ${{ env.ROUTE }} ]]
         [transformers-master (3).zip](https://github.com/Nico070707/Nico070707/files/6924444/transformers-master.3.zip)
-gh repo clone huggingface/transformers
 
 
 
