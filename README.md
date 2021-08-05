@@ -612,13 +612,7 @@ context: .
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
                   [transformers-master (3).zip](https://github.com/Nico070707/Nico070707/files/6924444/transformers-master.3.zip)
-                  
-
-
-
-
-
-      
+                  - name: Security and Licence Scan
 
 
 
