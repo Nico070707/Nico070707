@@ -578,7 +578,38 @@ steps:
 - name: View application route
      run: |
         [[ -n ${{ env.ROUTE }} ]]
-        [transformers-master (3).zip](https://github.com/Nico070707/Nico070707/files/6924444/transformers-master.3.zip)
+        on:
+  schedule:
+    - cron: '19 0 * * *'
+  push:
+    branches: [ main ]
+    tags: [ 'v*.*.*' ]
+  pull_request:
+    branches: [ main ]
+    IMAGE_NAME: ${{ github.NICO070707 }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        - name: Docker Login
+  uses: docker/login-action@v1.10.0
+   registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          - name: Docker Metadata action
+  uses: docker/metadata-action@v3.4.1
+   images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+   - name: Build and push Docker images
+  uses: docker/build-push-action@v2.6.1
+context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+                  [transformers-master (3).zip](https://github.com/Nico070707/Nico070707/files/6924444/transformers-master.3.zip)
+
+
 
 
 
