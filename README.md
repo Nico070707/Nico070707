@@ -578,6 +578,10 @@ steps:
 - name: View application route
      run: |
         [[ -n ${{ env.ROUTE }} ]]
+- name: Setup Python
+  uses: actions/setup-python@v2.2.2
+  - name: Setup Python
+  uses: actions/setup-python@v2.2.2
         on:
   schedule:
     - cron: '19 0 * * *'
@@ -608,6 +612,7 @@ context: .
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
                   [transformers-master (3).zip](https://github.com/Nico070707/Nico070707/files/6924444/transformers-master.3.zip)
+                  
 
 
 
