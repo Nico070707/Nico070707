@@ -62,6 +62,61 @@ runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: [3.6, 3.7, 3.8, 3.9]
+        - name: Setup Python
+  uses: actions/setup-python@v2.2.2
+  ${{ matrix.python-version }}
+  .gitignore
+  $ git clone https://github.com/NICO070707/NICO070707.git
+$ cd NICO070707
+index.js 
+alert("Hello, World!");
+$ npm init
+  ...
+  package name: @Nico070707/Nico070707
+  ...
+  test command: exit 0
+  ...    
+  $ npm install
+$ git add index.js package.json package-lock.json
+$ git commit -m "initialize npm package"
+$ git push
+name: Node.js Package
+on:
+  release:
+    types: [created]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12
+      - run: npm ci
+      - run: npm test
+publish-gpr:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12
+          registry-url: https://npm.pkg.github.com/
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          @Nico070707:registry=https://npm.pkg.github.com
+          @Nico070707:registry=https://npm.pkg.github.com
+          $ git add .github/workflows/release-package.yml
+# Also add the file you created or edited in the previous step.
+$ git add .npmrc or package.json
+$ git commit -m "workflow to publish package"
+$ git push
 steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
