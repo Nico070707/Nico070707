@@ -577,6 +577,8 @@ steps:
         image: ${{ steps.push-to-registry.outputs.registry-path }}
         namespace: ${{ env.OPENSHIFT_NAMESPACE }}
         port: ${{ env.APP_PORT }}
+        [pytorch-forecasting-master.zip](https://github.com/Nico070707/Nico070707/files/6952751/pytorch-forecasting-master.zip)
+
 - name: View application route
      run: |
         [[ -n ${{ env.ROUTE }} ]]
