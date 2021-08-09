@@ -639,6 +639,196 @@ context: .
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          name: Python package
+on: [push]
+jobs:
+  build:
+runs-on: ubuntu-latest
+    strategy:
+      # You can use PyPy versions in python-version.
+      # For example, pypy2 and pypy3
+      matrix:
+        python-version: [2.7, 3.6, 3.7, 3.8, 3.9]
+steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      # You can test your matrix by printing the current Python version
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+        name: Python package
+on: [push]
+jobs:
+  build:
+runs-on: ubuntu-latest
+steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v2
+        with:
+          # Semantic version range syntax or exact version of a Python version
+          python-version: '3.x'
+          # Optional - x64 or x86 architecture, defaults to x64
+          architecture: 'x64'
+      # You can test your matrix by printing the current Python version
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+        name: Python package
+on: [push]
+jobs:
+  build:
+runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: [3.6, 3.7, 3.8, 3.9, pypy2, pypy3]
+        exclude:
+          - os: macos-latest
+            python-version: 3.6
+          - os: windows-latest
+            python-version: 3.6
+            steps:
+- uses: actions/checkout@v2
+- name: Set up Python
+  uses: actions/setup-python@v2
+  with:
+    python-version: '3.x'
+- name: Install dependencies
+  run: python -m pip install --upgrade pip setuptools wheel
+  steps:
+- uses: actions/checkout@v2
+- name: Set up Python
+  uses: actions/setup-python@v2
+  with:
+    python-version: '3.x'
+- name: Install dependencies
+  run: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+    steps:
+- uses: actions/checkout@v2
+- name: Setup Python
+  uses: actions/setup-python@v2
+  with:
+    python-version: '3.x'
+- name: Cache pip
+  uses: actions/cache@v2
+  with:
+    # This path is specific to Ubuntu
+    path: ~/.cache/pip
+    # Look to see if there is a cache hit for the corresponding requirements file
+    key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+    restore-keys: |
+      ${{ runner.os }}-pip-
+      ${{ runner.os }}-
+- name: Install dependencies
+  run: pip install -r requirements.txt
+  steps:
+- uses: actions/checkout@v2
+- name: Set up Python
+  uses: actions/setup-python@v2
+  with:
+    python-version: '3.x'
+- name: Install dependencies
+  run: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+- name: Test with pytest
+  run: |
+    pip install pytest
+    pip install pytest-cov
+    pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+    steps:
+- uses: actions/checkout@v2
+- name: Set up Python
+  uses: actions/setup-python@v2
+  with:
+    python-version: '3.x'
+- name: Install dependencies
+  run: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+- name: Lint with flake8
+  run: |
+    pip install flake8
+    flake8 .
+    name: Python package
+on: [push]
+jobs:
+  build:
+runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: [3.7, 3.8, 3.9]
+steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install Tox and any other packages
+        run: pip install tox
+      - name: Run Tox
+        # Run tox using the version of Python in `PATH`
+        run: tox -e py
+        name: Python package
+on: [push]
+jobs:
+  build:
+runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8, 3.9]
+steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python # Set Python version
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      # Install pip and pytest
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+      - name: Test with pytest
+        run: pytest tests.py --doctest-modules --junitxml=junit/test-results-${{ matrix.python-version }}.xml
+      - name: Upload pytest test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: pytest-results-${{ matrix.python-version }}
+          path: junit/test-results-${{ matrix.python-version }}.xml
+        # Use always() to always run this step to publish test results when there are test failures
+        if: ${{ always() }}
+        # This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+name: Upload Python Package
+on:
+  release:
+    types: [published]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build
+      - name: Build package
+        run: python -m build
+      - name: Publish package
+        uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
 - name: View application route
      run: |
         [[ -n ${{ env.ROUTE }} ]]
