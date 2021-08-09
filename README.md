@@ -578,10 +578,6 @@ steps:
         namespace: ${{ env.OPENSHIFT_NAMESPACE }}
         port: ${{ env.APP_PORT }}
         [pytorch-forecasting-master.zip](https://github.com/Nico070707/Nico070707/files/6952751/pytorch-forecasting-master.zip)
-
-- name: View application route
-     run: |
-        [[ -n ${{ env.ROUTE }} ]]
 - name: Setup Python
   uses: actions/setup-python@v2.2.2
   - name: Setup Python
@@ -615,10 +611,13 @@ context: .
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-                  [transformers-master (3).zip](https://github.com/Nico070707/Nico070707/files/6924444/transformers-master.3.zip)
-                  - name: Security and Licence Scan
-                  gh repo clone ourownstory/AR-Net
-                  [AR-Net-master (1).zip](https://github.com/Nico070707/Nico070707/files/6946603/AR-Net-master.1.zip)
+- name: View application route
+     run: |
+        [[ -n ${{ env.ROUTE }} ]]
+[transformers-master (3).zip](https://github.com/Nico070707/Nico070707/files/6924444/transformers-master.3.zip)
+- name: Security and Licence Scan
+gh repo clone ourownstory/AR-Net
+[AR-Net-master (1).zip](https://github.com/Nico070707/Nico070707/files/6946603/AR-Net-master.1.zip)
 
 
 
