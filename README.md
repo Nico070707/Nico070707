@@ -66,3 +66,50 @@ print()
 [longformer-master (1).zip](https://github.com/Nico070707/Nico070707/files/7356181/longformer-master.1.zip)
 [Uploading transformers-master (4).zip…]()
 [Uploading transformers-master (6).zip…]()
+def gradient_descent(objective, derivative,
+    solution = bounds[: , 0] + rand(len(bound
+    for i in range(n_iter):
+        gradient = derivative(solution)
+        solution = solution - step_size * gr
+        solution_eval = objective(solution)
+        print('>%d f(%s) + %.5f' %(i, solut
+   return [solution, solution_eval]
+   objective function
+   def objective(x) :
+       return x**2.0
+   ...
+   r_min, r_max = -1.0, 1.0
+   inputs = arange(r_min, r_max+0.1, 0.1)
+   results = objective(inputs
+   ...
+   pyplot.plot(inputs, results)
+   pyplot.show()
+   from numpy import arange
+   from matplotlib import pyplot
+   def objective(x):
+       return x**2.0
+   pyplot.plot(inputs, results)
+   pyplot.show()
+   from numpy import arange
+   from matplotlib import pyplot
+   def objective(x):
+       return x**2.0
+   pyplot.plot(inputs, results)
+   "show the plot
+   pyplot.show()
+   from numpy import arange
+   from matplotlib import pyplot
+   def objective(x):
+       return x**2.0
+   r_min, r_max = -1.0, 1.0
+   inputs = arange(r_min, r_max+0.1, 0.1)
+   #compute targets
+   results = objective(inputs)
+   pyplot.plot(inputs, results)
+   pyplot.show()
+   # derivative of objective function
+   def derivative(x):
+       return x * 2.0
+   ...
+   bounds = asarray([[-1.0, 1.0]])
+  
