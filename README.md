@@ -4,11 +4,6 @@
 [AR-Net-master.zip](https://github.com/Nico070707/Nico070707/files/6946579/AR-Net-master.zip)
 [dockerfile.github.io-master (1).zip](https://github.com/Nico070707/Nico070707/files/6900367/dockerfile.github.io-master.1.zip)
 [transformers-master.zip](https://github.com/Nico070707/Nico070707/files/6898635/transformers-master.zip)
-- 👋 Hi, I’m @Nico070707
-- 👀 I’m interested in real Data Humanity to build a better world. A real dream could begin a real life
-- 🌱 I’m currently learning DataScience
-- 💞️ I’m looking to collaborate on Project for humanity with code
-- 📫 How to reach me https://www.linkedin.com/in/nicolas-bourne-635a0033/
 corpus = ["I Like Python because I can build AI applications", 
 "I like Python because I can do data analytics","The cat sits on the ground","The cat walks on the sidewalk"]
 corpus_embeddings = model.encode(corpus, convert_to_tensor=True)
@@ -103,11 +98,9 @@ def gradient_descent(objective, derivative,
        return x**2.0
    r_min, r_max = -1.0, 1.0
    inputs = arange(r_min, r_max+0.1, 0.1)
-   #compute targets
    results = objective(inputs)
    pyplot.plot(inputs, results)
    pyplot.show()
-   # derivative of objective function
    def derivative(x):
        return x * 2.0
    ...
