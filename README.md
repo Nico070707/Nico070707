@@ -37,7 +37,7 @@ embedding2 = model.encore(sentence2, convert_to_tensor=True)
 cosine scores = util.pytorch_cos_sim(embedding1, embedding2)
 print("Sentence 1:", sentence1)
 print("Sentence 2:", sentence2)
-print("Similarity score", cosine_scores.itrem())
+print("Similarity score", cosine_scores.item())
 sentence1 = ["I Like Python because I can build AI applications, "The cat sits on the ground"]
 sentence2 = [I Like Python because I can do data anaytics", "The cat walks on the sidewalk"]
 embedding1 = model.encode(sentence1, convert_to_tensor=True)
@@ -49,6 +49,14 @@ print("Sentence 1:", sentences1[i])
 print("Sentence 2:", sentences2[j])
 print("similarity Score:", cosine_scores[i][j].item())
 print()
+- name: Perform Scan
+      uses: ShiftLeftSecurity/scan-action@master
+      env:
+        WORKSPACE: ""
+        GITHUB_TOKEN: ${{ secrets.the_cat_is_on_the_sidewalk }}
+        SCAN_AUTO_BUILD: true
+      with:
+        output: reports
 [fastText-master (2).zip](https://github.com/Nico070707/Nico070707/files/7356135/fastText-master.2.zip)
 [apps-main.zip](https://github.com/Nico070707/Nico070707/files/7356141/apps-main.zip)
 [human-eval-master.zip](https://github.com/Nico070707/Nico070707/files/7356143/human-eval-master.zip)
