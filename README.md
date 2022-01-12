@@ -112,9 +112,14 @@ def gradient_descent(objective, derivative,
    def derivative(x):
        return x * 2.0
    ...
+   actions/checkout@v2
+name: Run a one-line script
+        run: echo Hello, world!
    bounds = asarray([[-1.0, 1.0]])
   [pytorch-master.zip](https://github.com/Nico070707/Nico070707/files/7357442/pytorch-master.zip)
 [fastText-master (3).zip](https://github.com/Nico070707/Nico070707/files/7357625/fastText-master.3.zip)
 [fmin_adam-master.zip](https://github.com/Nico070707/Nico070707/files/7357627/fmin_adam-master.zip)
 [Java-Machine-Learning-master.zip](https://github.com/Nico070707/Nico070707/files/7357630/Java-Machine-Learning-master.zip)
 [Uploading Python-master.zip…]()
+
+        
