@@ -21,51 +21,94 @@ g = nx.from_numpy_matrix(cosine_scores.numpy())
 centrality_scores = nx.degree_centrality(g)
 most_central_sentence_indices = np.argsort(centrality_scores)
 print("\n\nSummary:")
- corpus_embedding = model.encode(corpus, convert_to_tensor=True)
-          sentence = "I like Javascript because I can build web applications"
-          top_k=2
-          cos_scores = util.pytorch_cos_sin(sentence_embedding. corpus_embedding)[0]
-          top_results = np.argpartition(-cos_scores, range(top_k))[0:top_k]
-          print("Sentence:", sentence, "\n")
-          print("Top", top_k, "most similar sentences in corpus:")
-          for idx in top_results[0:top_k]:
-          print(corpus[idx], "(Score: %.4f)" % (cos_scores[idx]))
-sentence 1 = "I Like Python because I can build AI applications"
-sentence 2 = "I Like Python because I can do data analytics"
+print(corpus[idx], "(Score: %.4f)" % (cos_scores[idx]))
+         tokenizer = AutoTokenizer.from_pretrained("sentence-transformers:bert-base-nli-mean-tokens")
+model = AutoModel.from_pretrained("sentence-transformers/bert-base-nli-mean-tokens")
+encoded_input = tokenizer(sentences, padding=True, truncation=True, max_length=128, return_tensors='pt')
+with torch.no_grad():
+    model_output =  model(**encoded_input)
+    sentence1 = "I like Python because I can build AI applications"
+sentence2 = "I like Python because I can do data analytics"
 embedding1 = model.encode(sentence1, convert_to_tensor=True)
-embedding2 = model.encore(sentence2, convert_to_tensor=True)
-cosine scores = util.pytorch_cos_sim(embedding1, embedding2)
+embedding2 = model.encode(sentence2, convert_to_tensor=True)
+cosine_scores = utilpytorch_cos_sin(embedding1, embedding2)
 print("Sentence 1:", sentence1)
 print("Sentence 2:", sentence2)
-print("Similarity score", cosine_scores.item())
-sentence1 = ["I Like Python because I can build AI applications, "The cat sits on the ground"]
-sentence2 = [I Like Python because I can do data anaytics", "The cat walks on the sidewalk"]
+print("Similarity score:", cosine_scores.item())
+tokenizer = AutoTokenizer.from_pretrained("sentence-transformers:bert-base-nli-mean-tokens")
+model = AutoModel.from_pretrained("sentence-transformers/bert-base-nli-mean-tokens")
+encoded_input = tokenizer(sentences, padding=True, truncation=True, max_length=128, return_tensors='pt')
+with torch.no_grad():
+    model_output =  model(**encoded_input)
+sentence_embedding = mean_poolinhg(model-output, encoded-input['attention_mask'])
+util.pytorch_cos_sin(sentence_embedding[1], sentence_embedding[0]).numpy()[0](0)
+0.71667016
+model_output =  model(**encoded_input)
+sentence_embedding = mean_poolinhg(model-output, encoded-input['attention_mask'])
+util.pytorch_cos_sin(sentence_embedding[1], sentence_embedding[0]).numpy()[0](0)
+0.71667016
+import networkx as nx
+        model = SentenceTransformer('distilroberta-base-paraphrase-v1')
+embedding = model.encode(sentences, convert-to-tensor=True)
+cosine_scores = util.pytorch_cos_sin(embeddings, embeddings)
+g = nx.from_numpy_matric(cosine_scores.numpy())
+centrality_scores = nx.degree_centrality(g)
+most_central_sentence_indices = np.argsort(centrality_scores)
+print("\n\nSummary;")
+for idx in most_central_sentence_indices[0:4]:
+idx(sentences[idx].strip())
+        from sentence_transformers import SentenceTransformer, util
+import numpy as np
+from sentence_transformers import SentenceTransformer
+model = SentenceTransformer('distilroberta-base-parapharse-v1')
+embedding = model.encode(sentences, convert_to_tensor=True)
+cosine_scores = util.pytorch_cos_sin(embedding, embedding).numpy()
+print(cosine_scores)
+        corpus_embeddings = model.encode(corpus, convert_to_tensor=True)
+sentence = "I like Javascript because I can build web applications"
+sentence_embedding = model.encode(sentence, convert_to_tensor=True)
+cos_scores = util.pytorch_cos_sim(sentence_embedding, corpus_embeddings)[0]
+top_results = np.argpartition(-cos_scores, range(top_k))[0:top_k]
+print("Sentence:",sentence, "\n")
+print("Top", top_k, "most similar sentences in corpus:")
+def gradient_descent(objective, derivative,
+    solution = bounds[: , 0] + rand(len(bound
+    for i in range(n_iter):
+        gradient = derivative(solution)
+        solution = solution - step_size * gr
+        solution_eval = objective(solution)
+        print('>%d f(%s) + %.5f' %(i, solut
+   return [solution, solution_eval]
+   objective function
+   def objective(x) :
+       return x**2.0
+import networkx as nx
+        import networkx a ax
+g = nx.from_numpy_matrix(cosine_scores.numpy())
+centrality_scores = nx.degree_centrality(g)
+most_central_sentence_indices = no.argsort(centrality_scores)
+print("\n\nSummary:")
+for idx in most_central_sentence_indices[0:4]:
+     idx(sentences[idx].strip())
+sentence1 = "I like Python because I can build AI applications"
+sentence2 = "I like Python because I can do data analytics"
 embedding1 = model.encode(sentence1, convert_to_tensor=True)
-embedding2 = model.encore(sentence2, convert_to_tensor=True)
-cosine scores= util.pytorch_cos_sim(embedding1, embedding2)
-for i in range(len(sentence1))
-for j in range(len(sentence2))
-print("Sentence 1:", sentences1[i])
-print("Sentence 2:", sentences2[j])
-print("similarity Score:", cosine_scores[i][j].item())
-print()
-- name: Perform Scan
-      uses: ShiftLeftSecurity/scan-action@master
-      env:
-        WORKSPACE: ""
-        GITHUB_TOKEN: ${{ secrets.the_cat_is_on_the_sidewalk }}
-        SCAN_AUTO_BUILD: true
-      with:
-        output: reports
-        embedding1 = model.encode(sentence1, convert_to_tensor=True)
 embedding2 = model.encode(sentence2, convert_to_tensor=True)
-cosine_scores = util.pytorch_cos_sin(embedding1, embedding2)
-for i in range (len(sentence1)):
-    for j in range(len(sentence2)):
-        print("Sentence 1:", sentence1[i])
-        print("Sentence 2:", sentence2[j])
-        print("Similary Score:", cosine_scores[i][j].item()]
-        print()
+cosine_scores = utilpytorch_cos_sin(embedding1, embedding2)
+print("Sentence 1:", sentence1)
+print("Sentence 2:", sentence2)
+print("Similarity score:", cosine_scores.item())
+tokenizer = AutoTokenizer.from_pretrained("sentence-transformers:bert-base-nli-mean-tokens")
+model = AutoModel.from_pretrained("sentence-transformers/bert-base-nli-mean-tokens")
+encoded_input = tokenizer(sentences, padding=True, truncation=True, max_length=128, return_tensors='pt')
+with torch.no_grad():
+    model_output =  model(**encoded_input)
+sentence_embedding = mean_poolinhg(model-output, encoded-input['attention_mask'])
+util.pytorch_cos_sin(sentence_embedding[1], sentence_embedding[0]).numpy()[0](0)
+0.71667016
+ for idx in top_results(0:top_k]:
+ bounds = asarray([[-1.0, 1.0]])
+   model_output =  model(**encoded_input)
         corpus = ["I Like Python because I can build AI applications", 
 "I like Python because I can do data analytics","The cat sits on the ground","The cat walks on the sidewalk"]
 sentences = ['This framework generates embeddings for each input sentence','Sentence are passed as a list of string, ','The quick brown for jumps over the lazy dog.') 
@@ -110,56 +153,11 @@ print()
         SCAN_AUTO_BUILD: true
       with:
         output: reports
-        tokenizer = AutoTokenizer.from_pretrained("sentence-transformers:bert-base-nli-mean-tokens")
-model = AutoModel.from_pretrained("sentence-transformers/bert-base-nli-mean-tokens")
-encoded_input = tokenizer(sentences, padding=True, truncation=True, max_length=128, return_tensors='pt')
-with torch.no_grad():
-    model_output =  model(**encoded_input)
-sentence_embedding = mean_poolinhg(model-output, encoded-input['attention_mask'])
-util.pytorch_cos_sin(sentence_embedding[1], sentence_embedding[0]).numpy()[0](0)
-0.71667016
-import networkx as nx
-        import networkx a ax
-g = nx.from_numpy_matrix(cosine_scores.numpy())
-centrality_scores = nx.degree_centrality(g)
-most_central_sentence_indices = no.argsort(centrality_scores)
-print("\n\nSummary:")
-for idx in most_central_sentence_indices[0:4]:
-     idx(sentences[idx].strip())
-sentence1 = "I like Python because I can build AI applications"
-sentence2 = "I like Python because I can do data analytics"
-embedding1 = model.encode(sentence1, convert_to_tensor=True)
-embedding2 = model.encode(sentence2, convert_to_tensor=True)
-cosine_scores = utilpytorch_cos_sin(embedding1, embedding2)
-print("Sentence 1:", sentence1)
-print("Sentence 2:", sentence2)
-print("Similarity score:", cosine_scores.item())
-tokenizer = AutoTokenizer.from_pretrained("sentence-transformers:bert-base-nli-mean-tokens")
-model = AutoModel.from_pretrained("sentence-transformers/bert-base-nli-mean-tokens")
-encoded_input = tokenizer(sentences, padding=True, truncation=True, max_length=128, return_tensors='pt')
-with torch.no_grad():
-    model_output =  model(**encoded_input)
-sentence_embedding = mean_poolinhg(model-output, encoded-input['attention_mask'])
-util.pytorch_cos_sin(sentence_embedding[1], sentence_embedding[0]).numpy()[0](0)
-0.71667016
-import networkx as nx
-        model = SentenceTransformer('distilroberta-base-paraphrase-v1')
-embedding = model.encode(sentences, convert-to-tensor=True)
-cosine_scores = util.pytorch_cos_sin(embeddings, embeddings)
-g = nx.from_numpy_matric(cosine_scores.numpy())
-centrality_scores = nx.degree_centrality(g)
-most_central_sentence_indices = np.argsort(centrality_scores)
-print("\n\nSummary;")
-for idx in most_central_sentence_indices[0:4]:
-idx(sentences[idx].strip())
-        from sentence_transformers import SentenceTransformer, util
-import numpy as np
-from sentence_transformers import SentenceTransformer
-model = SentenceTransformer('distilroberta-base-parapharse-v1')
-embedding = model.encode(sentences, convert_to_tensor=True)
-cosine_scores = util.pytorch_cos_sin(embedding, embedding).numpy()
-print(cosine_scores)
-        corpus_embeddings = model.encode(corpus, convert_to_tensor=True)
+        import numpy as np
+model = SentenceTransformer('distilroberta-base-paraphrase-v1)
+embeddings = model.encode(sentences, convert_to_tensor=True)
+cosine_scores = util.pytorch_cos_sin(embeddings, embeddings).numpy()
+corpus_embeddings = model.encode(corpus, convert_to_tensor=True)
 sentence = "I like Javascript because I can build web applications"
 sentence_embedding = model.encode(sentence, convert_to_tensor=True)
 cos_scores = util.pytorch_cos_sim(sentence_embedding, corpus_embeddings)[0]
