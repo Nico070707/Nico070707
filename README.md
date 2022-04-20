@@ -352,11 +352,23 @@ sentences = ['This framework generates embeddings for each input sentence',
 [longformer-master (1).zip](https://github.com/Nico070707/Nico070707/files/7356181/longformer-master.1.zip)
 [Uploading transformers-master (4).zip…]()
 [Uploading transformers-master (6).zip…]()
-   bounds = asarray([[-1.0, 1.0]])
+   bounds = asarray([[-1.0, 1.0]])<head>
+  <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-spe-particles-component@^1.0.4/dist/aframe-spe-particles-component.min.js"></script>
+</head>
+<body>
+  <a-entity particles="texture: /assets/blob.png; color: blue; velocity: 0 10 0; velocity-spread: 2 0 2; acceleration: 0 -10 0"></a-entity>
+</body>
+   <head>
+  <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-spe-particles-component@^1.0.4/dist/aframe-spe-particles-component.min.js"></script>
+</head>
+<body>
+  <a-entity particles="texture: /assets/blob.png; color: blue; velocity: 0 10 0; velocity-spread: 2 0 2; acceleration: 0 -10 0"></a-entity>
+</body>
   [pytorch-master.zip](https://github.com/Nico070707/Nico070707/files/7357442/pytorch-master.zip)
 [fastText-master (3).zip](https://github.com/Nico070707/Nico070707/files/7357625/fastText-master.3.zip)
 [fmin_adam-master.zip](https://github.com/Nico070707/Nico070707/files/7357627/fmin_adam-master.zip)
 [Java-Machine-Learning-master.zip](https://github.com/Nico070707/Nico070707/files/7357630/Java-Machine-Learning-master.zip)
 [Uploading Python-master.zip…]()
 
-        
