@@ -1,0 +1,41 @@
+{
+    "configurations": [
+        
+        
+        {
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/app.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+
+        
+
+    {
+        "name": "Launch Program",
+        "program": "${workspaceFolder}/app.js",
+        "request": "launch",
+        "skipFiles": [
+            "<node_internals>/**"
+        ],
+        "type": "node"
+        "request": "launch",
+        "name" "Launch Program",
+        "program": "${workspaceRoot}hello.js,
+        "cwd": "${workspaceRoot}"
+        "
+    }
+    {
+        "type: "node",
+        "request": "launch",
+        "name": "Launch Program",
+        "program": "${workspaeRoot}"
+    },
+{
+    "type": "node",
+    "request": "attach",
+    "name":"Attach to Process",
+    "port": 5858
