@@ -204,9 +204,6 @@ sentences = ['This framework generates embeddings for each input sentence',
 [AR-Net-master.zip](https://github.com/Nico070707/Nico070707/files/6946579/AR-Net-master.zip)
 [dockerfile.github.io-master (1).zip](https://github.com/Nico070707/Nico070707/files/6900367/dockerfile.github.io-master.1.zip)
 [transformers-master.zip](https://github.com/Nico070707/Nico070707/files/6898635/transformers-master.zip)
-for idx in top_results(0:top_k]:
- bounds = asarray([[-1.0, 1.0]])
-   model_output =  model(**encoded_input)
         corpus = ["I Like Python because I can build AI applications", 
 "I like Python because I can do data analytics","The cat sits on the ground","The cat walks on the sidewalk"]
 sentences = ['This framework generates embeddings for each input sentence','Sentence are passed as a list of string, ','The quick brown for jumps over the lazy dog.') 
@@ -305,8 +302,6 @@ top_results = np.argpartition(-cos_scores, range(top_k))[0:top_k]
 print("Sentence:",sentence, "\n")
 print("Top", top_k, "most similar sentences in corpus:")
 for idx in top_results(0:top_k]:
- bounds = asarray([[-1.0, 1.0]])
-   bounds = asarray([[-1.0, 1.0]])
 sentence1 = ["I like Python because I can build AI applications", "The cat sits on the ground"]
 sentence2 = ["I like Python because I can do data analytics", "The cat walks on the sidewalk"]
 corpus = ["I like Python because I can build AI applications",
@@ -339,7 +334,6 @@ sentences = ['This framework generates embeddings for each input sentence',
 [AR-Net-master.zip](https://github.com/Nico070707/Nico070707/files/6946579/AR-Net-master.zip)
 [dockerfile.github.io-master (1).zip](https://github.com/Nico070707/Nico070707/files/6900367/dockerfile.github.io-master.1.zip)
 [transformers-master.zip](https://github.com/Nico070707/Nico070707/files/6898635/transformers-master.zip)
-   bounds = asarray([[-1.0, 1.0]])
 [fastText-master (2).zip](https://github.com/Nico070707/Nico070707/files/7356135/fastText-master.2.zip)
 [apps-main.zip](https://github.com/Nico070707/Nico070707/files/7356141/apps-main.zip)
 [human-eval-master.zip](https://github.com/Nico070707/Nico070707/files/7356143/human-eval-master.zip)
