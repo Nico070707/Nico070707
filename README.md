@@ -78,10 +78,6 @@ def gradient_descent(objective, derivative,
    objective function
    def objective(x) :
        return x**2.0
-        bounds = asarray([[-1.0, 1.0]])
-        for idx in top_results(0:top_k]:
- bounds = asarray([[-1.0, 1.0]])
- model_output =  model(**encoded_input)
         corpus = ["I Like Python because I can build AI applications", 
 "I like Python because I can do data analytics","The cat sits on the ground","The cat walks on the sidewalk"]
 sentences = ['This framework generates embeddings for each input sentence','Sentence are passed as a list of string, ','The quick brown for jumps over the lazy dog.') 
@@ -170,8 +166,6 @@ print()
        return x * 2.0
        import numpy as np
         for idx in top_results(0:top_k]:
- bounds = asarray([[-1.0, 1.0]])
-   bounds = asarray([[-1.0, 1.0]])
 sentence1 = ["I like Python because I can build AI applications", "The cat sits on the ground"]
 sentence2 = ["I like Python because I can do data analytics", "The cat walks on the sidewalk"]
 corpus = ["I like Python because I can build AI applications",
