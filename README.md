@@ -341,3 +341,5 @@ sentences = ['This framework generates embeddings for each input sentence',
 [Uploading transformers-master (4).zip…]()
 [Uploading transformers-master (6).zip…]()
 https://rebornix.visualstudio.com/DefaultCollection/Pull%20Request/_git/Pull%20Request
+git remote add origin https://rebornix.visualstudio.com/DefaultCollection/Pull%20Request/_git/Pull%20Request
+git push -u origin --all
