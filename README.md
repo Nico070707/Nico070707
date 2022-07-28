@@ -343,3 +343,9 @@ sentences = ['This framework generates embeddings for each input sentence',
 https://rebornix.visualstudio.com/DefaultCollection/Pull%20Request/_git/Pull%20Request
 git remote add origin https://rebornix.visualstudio.com/DefaultCollection/Pull%20Request/_git/Pull%20Request
 git push -u origin --all
+docker pull privatebin/nginx-fpm-alpine
+docker run -d --restart="always" --read-only -p 8080:8080 -v $PWD/privatebin-data:/srv/data privatebin/nginx-fpm-alpine
+docker run -d --restart="always" --read-only -p 8080:8080 -v $PWD/conf.php:/srv/cfg/conf.php:ro -v $PWD/privatebin-data:/srv/data privatebin/nginx-fpm-alpine
+docker build -t privatebin/nginx-fpm-alpine .
+
+
